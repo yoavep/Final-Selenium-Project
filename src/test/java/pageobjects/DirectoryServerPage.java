@@ -40,6 +40,7 @@ public class DirectoryServerPage extends UserDirectoryPage {
 	}
 	
 	public void pressTestConnectionBtn() {
+		sleep(1000);
 		click(testConnectionBtn);
 	}
 	
@@ -48,6 +49,7 @@ public class DirectoryServerPage extends UserDirectoryPage {
 	}
 	
 	public void feelAdData(String adName, String ipAddress, String userName, String password) {
+		sleep(1000); 
 		fillText(this.userDirectoryName, adName);
 		fillText(this.userDirectoryHostName, ipAddress);
 		fillText(this.userDistinguishedName, userName);
@@ -57,6 +59,7 @@ public class DirectoryServerPage extends UserDirectoryPage {
 	public void createNewUserDirectory(String adName, String ipAddress, String userName, String password) {
 		pressNewButton();
 		wait.until(ExpectedConditions.visibilityOf(userDirectoryName));
+		sleep(1000);
 		
 		feelAdData(adName, ipAddress, userName, password);
 		

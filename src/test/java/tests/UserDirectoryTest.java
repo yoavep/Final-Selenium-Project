@@ -32,7 +32,7 @@ public class UserDirectoryTest extends BaseTest {
 	@Test
 	private void tc03_deleteBtnPressedNothingSelected() {
 		String expected = "Please select the name(s) of the user directory server(s) to delete.";
-		String actual = userDirectoryPage.deleteBtnPressedNothingSelected();
+		String actual = userDirectoryPage.deleteBtnPressed();
 		assertEquals(actual, expected);		
 	}
 	

@@ -1,16 +1,19 @@
 package tests;
 
+import org.testng.ITestContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import utils.Utils;
 
 import pageobjects.DirectoryServerPage;
 import pageobjects.DocsPage;
 import pageobjects.LoginPage;
 import pageobjects.MainPage;
 import pageobjects.UserDirectoryPage;
-import utils.Utils;
 
 public class BaseTest {
 	WebDriver driver;
@@ -21,7 +24,8 @@ public class BaseTest {
 	DirectoryServerPage directoryServerPage; 
 
 	@BeforeClass
-	public void setup() {
+	protected void setup(ITestContext testContext) {	
+		driver = WebDriverManager.chromedriver().create();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(Utils.readProperty("url"));
@@ -30,10 +34,12 @@ public class BaseTest {
 		mainPage = new MainPage(driver);
 		userDirectoryPage = new UserDirectoryPage(driver);
 		directoryServerPage = new DirectoryServerPage(driver);
+	
+		testContext.setAttribute("WebDriver", this.driver);
 	} 
 	
 	@AfterClass
-	public void tearDown() {		
+	public void tearDown() {	
 		driver.quit();
 	}
 }

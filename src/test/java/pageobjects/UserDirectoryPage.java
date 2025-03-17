@@ -21,6 +21,8 @@ public class UserDirectoryPage extends MainPage {
 	private WebElement userDirectoryList;	
 	@FindBy(css=".regularTextCol.dataTableType1NoTooltip")
 	private List<WebElement> adItem;	
+	@FindBy(css="#rowIndex")
+	private WebElement selectAllAd;
 	
 	public UserDirectoryPage(WebDriver driver) {
 		super(driver);
@@ -40,6 +42,7 @@ public class UserDirectoryPage extends MainPage {
 		boolean[] toolbarMenuItems = {false, false, false, false, false};
 		
 		switchToFrame("data");
+		sleep(1000);
 		
 		for (WebElement wl : toolbarColumnName) {
 			switch (getText(wl)) {
@@ -118,7 +121,7 @@ public class UserDirectoryPage extends MainPage {
 		}
 	}
 
-	public String deleteBtnPressedNothingSelected() {
+	public String deleteBtnPressed() {
 		pressToolbarBtn("Delete");
 		return (returnErrorMsg());
 	}
@@ -148,4 +151,8 @@ public class UserDirectoryPage extends MainPage {
 			return false;
 		}
 	}
+	
+	public void selectAllActiveDirectories() {
+		selectAllAd.click();
+	}	
 }

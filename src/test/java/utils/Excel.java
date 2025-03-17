@@ -64,9 +64,9 @@ public class Excel {
 			Boolean booleanCellData= false;
 
 			Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
-			if (Cell.getCellTypeEnum() == CellType.STRING)
+			if (Cell.getCellType() == CellType.STRING)
 				CellData = Cell.getStringCellValue();
-			else if (Cell.getCellTypeEnum() == CellType.NUMERIC){
+			else if (Cell.getCellType() == CellType.NUMERIC){
 				numericCellData = Cell.getNumericCellValue();
 				intCellData = (long)numericCellData;
 				doubleCellData = (double)numericCellData;
@@ -75,7 +75,7 @@ public class Excel {
 				else
 					CellData = String.valueOf(doubleCellData);
 			}
-			else if (Cell.getCellTypeEnum() == CellType.BOOLEAN){
+			else if (Cell.getCellType() == CellType.BOOLEAN){
 				booleanCellData = Cell.getBooleanCellValue();
 				CellData = String.valueOf(booleanCellData);
 			}
